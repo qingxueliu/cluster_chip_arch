@@ -1,1 +1,101 @@
+2022-10-29完成初步版本-Nick Liu
+2023-01-03完成修改版本-Nick Liu
+2023-04-23完成修改版本-Nick Liu
+2023-07-04 完成修改版本-Nick Liu，将代码结构分成四个部分，分别是用户工具栈和demo说明、软集群和硬集群相关云软件、bicp 软件栈和翻译器和映射器和runtime&sdk&driver、加速库和调试库共计四个部分
+
+
+/*************用户软件栈和工具栈说明*************/
+│*************************
+├── arm_gui:集成开发环境---用户需知
+│  		├── arm_gui：有向图生成器
+│  		├── 说明文档
+│*************************
+├── arm_gen：有向图生成器---用户需知
+│  		├── arm_gen：有向图生成器
+│  		├── 说明文档
+│*************************
+├── bicp_com：通用模块---用户需知
+│  		├── bicp_com：有向图生成器
+│  		├── 说明文档
+/*************用户example说明*************/
+│*************************
+├── bicp_host_example:任务用户API---用户需知
+│  		├── E1_base_function：基础代码测试
+│  		├── E2_base_send&receive_dvpp_mmc：有mmc宏指令处理器的用户基础API
+│  		├── E2_base_send&receive_dvpp_nommc:无mmc宏指令处理器的用户基础API
+│  		├── 说明文档
+
+
+/*************软集群和硬集群相关的云软件栈*************/
+│*************************
+├── bicp_host_api_cloud_lib：云互联API
+│  		├── cloud_udp：云物联网API接口
+│  		├── 说明文档
+│************************* 
+├── bicp_host_superm_debuger_profile：调试器和性能分析器
+│  		├── debuger_csc：设备管理调测器
+│  		├── debuger_pcie_service：业务调测器
+│  		└── profile：业务性能分析器
+│  		├── 说明文档
+│*************************
+├── bicp_host_superm_ptask_vtask：云层和调度层
+│  		├── cloud_spring_boot：云集成架构
+│  		├── cloud_ptask：云权重计算层
+│  		├── ptask_vtask：云任务调度层
+│  		├── 说明文档
+│*************************
+├── bicp_host_api_cloud_k8s：软集群实现的相关
+│  		├── cloud_k8s：与软集群的k8s有关系，主要包括device_plugin\exporter等
+│  		├── cloud_docker：主要包括docker_runtime\runc\toolkit等
+│  		├── 说明文档
+│*************************
+
+
+/*************bicp 软件栈和翻译器和映射器和runtime&sdk&driver*************/
+├── bicp_host_superm_poolling_corresponding：池化层和对应层
+│  		├── bicp_host_poolling：超级管理器池化层
+│  		├── bicp_host_corresponding：超级管理器对应层
+│  		├── 说明文档
+│*************************
+├── bicp_host_tk_compiler_mapping：翻译器和映射器工具栈
+│  		├── 1_bicp_host_compiler：翻译器
+│  		├── 2_arm：有向图生成器
+│  		├── 3_bicp_host_mapping：映射器
+│  		├── 3_bicp_code_gene：配置生成器
+│  		├── 说明文档
+│*************************
+├── bicp_host_mmc_code:宏指令汇编生成器---用户需知
+│  		├── bicp_device_mmc_host： 主机软件控制mmc相关的api函数实现
+│  		├── bicp_sccl_device_mmc_risc 精简指令集汇编生成器
+│  		├──bicp_device_mmc_vc：bpc table映射表
+│  		├── bicp_gcarch_device：mmc加速库
+│  		├── 说明文档
+│*************************
+├── dload_code_gen：代码生成器
+│  		├── dload_code_gen：有向图生成器
+│  		├── 说明文档
+│*************************
+├── bicp_host_rt_pcie:PCIE-RT及SDK和固件---用户需知
+│  		├── bicp_host_pcie_drive：pcie驱动
+│  		├── bicp_host_pcie_pkg：pcie sdk
+│  		└── bicp_host_rt_pcie_schel：pcie的时间片的中间件
+│  		├── 说明文档
+│*************************
+
+/*************加速库和调试库************/
+├── bicp_sccl_api_device_lib：设备层加速库---用户需知
+│ 		├── bicp_basic_cmd：设备层基础层加速器
+│ 		├── bicp_gcarch_device_cmd：设备层计算加速单元
+│ 		├── bicp_sccl_device：设备层通信加速单元
+│  		├── 说明文档
+│*************************
+├── bicp_sccl_api_host_libb：主机层加速库---用户需知
+│ 		├── bicp_host_mpi：主机MPI通信层加速单元
+│ 		├── bicp_sccl_host：主机通信加速单元
+│  		├── 说明文档
+│*************************
+├── nvml库：调试库说明
+│  		├── 说明文档
+
+└── 请先看Readme.txt
 
