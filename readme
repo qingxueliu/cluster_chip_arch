@@ -1,19 +1,19 @@
 2022-10-29完成初步版本-Nick Liu
 2023-01-03完成修改版本-Nick Liu
 2023-04-23完成修改版本-Nick Liu
-2023-07-04 完成修改版本-Nick Liu，将代码结构分成四个部分，分别是用户工具栈和demo说明、软集群和硬集群相关云软件、bicp 软件栈和翻译器和映射器和runtime&sdk&driver、加速库和调试库共计四个部分
+2023-07-04 完成修改版本-Nick Liu，将代码结构分成四个部分，分别是用户工具栈和demo说明、软集群和硬集群相关云软件、bicp软件栈、加速库和调试库共计四个部分
 详细如下  
 （1）用户工具栈和demo说明：包括集成开发环境、有向图生成器、通用模块、用户demo  
 （2）软集群和硬集群相关云软件：与<thubicp_cloud>有一定的相同，包括云API和调试器及性能分析器和云层调度等以及软集群相关的实现、设备管理器等  
-（3）bicp 软件栈和翻译器和映射器和runtime&sdk&driver：代码核心，包括代码生成器、池化层、映射器、runtime、sdk、driver、伪调度器等  
+（3）bicp软件栈：代码核心，包括代码生成器、池化层、映射器、runtime、sdk、driver、伪调度器等  
 （4）加速库和调试库：通信库、调试库、适配芯片等信令消息、以及与MPI和hvd通信库的结合
 上述软件适配AUCA架构
 
 
-/*************用户软件栈和工具栈说明*************/
+/*************用户工具栈和demo说明*************/
 │*************************
 ├── arm_gui:集成开发环境---用户需知
-│  		├── arm_gui：有向图生成器
+│  		├── arm_gui：集成开发环境
 │  		├── 说明文档
 │*************************
 ├── arm_gen：有向图生成器---用户需知
@@ -21,7 +21,7 @@
 │  		├── 说明文档
 │*************************
 ├── bicp_com：通用模块---用户需知
-│  		├── bicp_com：有向图生成器
+│  		├── bicp_com：软件通用模块
 │  		├── 说明文档
 /*************用户example说明*************/
 │*************************
@@ -38,7 +38,7 @@
 │  		├── cloud_udp：云物联网API接口
 │  		├── 说明文档
 │************************* 
-├── bicp_host_superm_debuger_profile：调试器和性能分析器
+├── bicp_host_superm_debuger_profile：性能分析器
 │  		├── debuger_csc：设备管理调测器
 │  		├── debuger_pcie_service：业务调测器
 │  		└── profile：业务性能分析器
@@ -57,13 +57,13 @@
 │*************************
 
 
-/*************bicp 软件栈和翻译器和映射器和runtime&sdk&driver*************/
-├── bicp_host_superm_poolling_corresponding：池化层和对应层
+/*************bicp 软件栈*************/
+├── bicp_host_superm_poolling_corresponding：池化层
 │  		├── bicp_host_poolling：超级管理器池化层
-│  		├── bicp_host_corresponding：超级管理器对应层
+│  		├── bicp_host_corresponding：超级管理器对应层，已融合至代码生成器
 │  		├── 说明文档
 │*************************
-├── bicp_host_tk_compiler_mapping：翻译器和映射器工具栈
+├── bicp_host_tk_compiler_mapping：映射器工具栈
 │  		├── 1_bicp_host_compiler：翻译器
 │  		├── 2_arm：有向图生成器
 │  		├── 3_bicp_host_mapping：映射器
@@ -84,7 +84,7 @@
 ├── bicp_host_rt_pcie:PCIE-RT及SDK和固件---用户需知
 │  		├── bicp_host_pcie_drive：pcie驱动
 │  		├── bicp_host_pcie_pkg：pcie sdk
-│  		└── bicp_host_rt_pcie_schel：pcie的时间片的中间件
+│  		└── bicp_host_rt_pcie_schel：pcie运行时
 │  		├── 说明文档
 │*************************
 
